@@ -16,6 +16,8 @@
 
 namespace by\component\pabank\base;
 
+use by\component\pabank\helper\XmlHelper;
+
 /**
  * Class BaseResp
  * 响应基础
@@ -23,5 +25,26 @@ namespace by\component\pabank\base;
  */
 abstract class BaseResp
 {
+    /**
+     * 转化为xml
+     * @param string $root
+     * @param bool $includeXmlHead 是否包含xml头
+     * @param string $encoding 编码
+     * @return string
+     * @throws \ReflectionException
+     */
+    public function toXml($root = 'RESULT', $includeXmlHead = true, $encoding = "GBK")
+    {
+        return XmlHelper::getXmlFromObject($this, $root, $includeXmlHead, $encoding);
+    }
 
+    /**
+     * 从xml初始化数据
+     * @param $xml
+     * @throws \ReflectionException
+     */
+    public function fromXml($xml)
+    {
+        XmlHelper::setObjectFromXml($this, $xml);
+    }
 }

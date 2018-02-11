@@ -25,15 +25,23 @@ use by\component\pabank\base\BaseReq;
 class PayerAgreementQueryReq extends BaseReq
 {
     private $srcAccNo;
-    private $AGREE_NO;
-    private $busiType;
     private $startDate;
     private $endDate;
     private $oppAccNo;
-    private $oppAccName;
-    private $mobile;
+    private $oppAccName;//
+    private $mobile;// 付款人手机号
+    private $AGREE_NO;
+    private $busiType;
     private $status;
     private $pageNo;
+
+    public function __construct()
+    {
+        $this->setBusiType("M8PAK");// 默认为该值
+        $this->setStatus(0);// 0是正常 截止20180211, 只支持这个0正常状态
+        $this->setPageNo(1);
+        $this->setEndDate(date('Ymd', time() + 24*3600));
+    }
 
     /**
      * @return mixed
@@ -54,7 +62,7 @@ class PayerAgreementQueryReq extends BaseReq
     /**
      * @return mixed
      */
-    public function getAGREENO()
+    public function getAGREE_NO()
     {
         return $this->AGREE_NO;
     }
@@ -62,7 +70,7 @@ class PayerAgreementQueryReq extends BaseReq
     /**
      * @param mixed $AGREE_NO
      */
-    public function setAGREENO($AGREE_NO)
+    public function setAGREE_NO($AGREE_NO)
     {
         $this->AGREE_NO = $AGREE_NO;
     }

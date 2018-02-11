@@ -18,10 +18,21 @@ namespace by\component\pabank\config;
 
 /**
  * Class TestConfig
- * 测试环境下配置
+ * 移动端测试环境下配置
+ * 测试数据2
+ * 参考 新核心ST_平安银行银企直连测试环境数据20161215.doc
+ *  9. 移动收款测试数据
  * @package by\component\pabank\config
  */
-class TestConfig extends BaseConfig
+class MobileTest2Config extends BaseConfig
 {
 
+    public function __construct()
+    {
+        $this->setBaseApiUrl("http://10.14.56.78:30007");
+        $this->setAccountName('平安测试六零零零五四二九七七七六');
+        $this->setAccountNo('00901079800000088000');
+        $this->setAgreementAcc('11014727214006');
+        $this->setAgreementNo('Y000136249');
+    }
 }

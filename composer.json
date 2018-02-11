@@ -17,10 +17,16 @@
   ],
   "autoload": {
     "psr-4": {
-      "by\\component\\": "src/"
+      "by\\component\\pabank\\": "src/",
+      "byTest\\component\\pabank\\": "test/"
     }
   },
   "repositories": {
+    "pkg_8raw":
+    {
+      "type": "composer",
+      "url": "http://pkg.8raw.com"
+    },
     "packagist": {
       "type": "composer",
       "url": "https://packagist.phpcomposer.com"
@@ -28,7 +34,8 @@
   },
   "require": {
     "php": ">=5.6",
-    "itboye/architecture": "dev-master"
+    "itboye/architecture": "dev-master",
+    "phpunit/phpunit": "6.5.x-dev"
   },
   "require-dev": {
   }
