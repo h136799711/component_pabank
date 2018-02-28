@@ -14,7 +14,7 @@
  *********************************
  */
 
-namespace by\component\pabank\helper;
+namespace by\component\pabank\B2biFrontMachine\helper;
 
 
 use by\infrastructure\helper\CallResultHelper;

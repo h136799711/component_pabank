@@ -17,7 +17,7 @@
 namespace by\component\pabank\B2biFrontMachine;
 
 
-use by\component\pabank\helper\XmlCurlHelper;
+use by\component\pabank\B2biFrontMachine\helper\XmlCurlHelper;
 
 class B2BiProxy
 {
@@ -32,6 +32,7 @@ class B2BiProxy
         if (empty($url)) {
             $url = $this->proxyUrl;
         }
+
         // TODO: 处理中转的错误
         $result =  XmlCurlHelper::postXml($url, $xml, $timeout);
         return $result;

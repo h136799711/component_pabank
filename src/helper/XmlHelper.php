@@ -77,7 +77,6 @@ class XmlHelper
             $tagValue .= self::getTag(ucfirst($key), $val);
         }
 
-
         return $xmlHeader.self::getTag($root, $tagValue);
     }
 
