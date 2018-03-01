@@ -16,14 +16,23 @@
 
 namespace by\component\pabank\orange_e\payer_agreement;
 
-
-use by\component\pabank\base\BaseApi;
+use by\component\pabank\orange_e\base\BaseOEApi;
 
 /**
  * Class PayerAgreementQueryApi
  * 付款协议查询
  * @package by\component\pabank\orange_e\payer_agreement
  */
-class PayerAgreementQueryApi extends BaseApi
+class PayerAgreementQueryApi extends BaseOEApi
 {
+    /**
+     * @param PayerAgreementQueryReq $agreementQueryReq
+     * @return \by\infrastructure\base\CallResult
+     * @throws \ReflectionException
+     */
+    public function call(PayerAgreementQueryReq $agreementQueryReq)
+    {
+        $xml = $agreementQueryReq->toXml('Result');
+        return $this->proxy->post($xml);
+    }
 }

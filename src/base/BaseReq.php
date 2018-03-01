@@ -34,7 +34,7 @@ abstract class BaseReq
      */
     public function toXml($root = 'RESULT', $includeXmlHead = true, $encoding = "GBK")
     {
-        return XmlHelper::getXmlFromObject($this, $root, $includeXmlHead, $encoding);
+        return XmlHelper::getXmlFromObject($this, $includeXmlHead, $root, $encoding);
     }
 
 

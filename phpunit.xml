@@ -11,6 +11,9 @@
          stopOnFailure="true"
          syntaxCheck="false">
 
+    <testsuite name="orange_e">
+        <directory>./test/orange_e</directory>
+    </testsuite>
     <testsuite name="xml">
         <directory>./test/xml</directory>
     </testsuite>

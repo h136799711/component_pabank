@@ -29,6 +29,7 @@ class MobileTest2Config extends BaseConfig
 
     public function __construct()
     {
+        $this->setB2biProxyUri("http://39.104.59.25:7072");
         $this->setBaseApiUrl("http://10.14.56.78:30007");
         $this->setAccountName('平安测试六零零零五四二九七七七六');
         $this->setAccountNo('00901079800000088000');

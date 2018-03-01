@@ -23,6 +23,10 @@ namespace by\component\pabank\config;
  */
 abstract class BaseConfig
 {
+    /**
+     * b2bi代理端口地址
+     */
+    private $b2biProxyUri;
 
     /**
      * 请求基础地址
@@ -33,6 +37,22 @@ abstract class BaseConfig
     private $accountNo;//企业代码
     private $agreementAcc;//签约账户
     private $agreementNo;//协议号
+
+    /**
+     * @return mixed
+     */
+    public function getB2biProxyUri()
+    {
+        return $this->b2biProxyUri;
+    }
+
+    /**
+     * @param mixed $b2biProxyUri
+     */
+    public function setB2biProxyUri($b2biProxyUri)
+    {
+        $this->b2biProxyUri = $b2biProxyUri;
+    }
 
     /**
      * @return mixed

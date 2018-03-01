@@ -23,9 +23,12 @@ class XmlCurlHelper
 {
     public static function postXml($url, $data, $timeout = 90)
     {
+        echo 'send xml';
+        echo $data;
         $ch = curl_init();
-        $len = strlen($data);
-        $header[] = "Content-Length: $len";
+        $header = [];
+//        $len = strlen($data);
+//        $header[] = "Content-Length: $len";
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type:text/xml; charset=utf-8"));
@@ -37,7 +40,7 @@ class XmlCurlHelper
         $err = curl_error($ch);
         curl_close($ch);
         if (!empty($err)) {
-            return CallResultHelper::fail($err);
+            return CallResultHelper::fail('[CURL]'.$err, '[REPLY]'.$result);
         }
 
         return CallResultHelper::success($result);

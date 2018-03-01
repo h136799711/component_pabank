@@ -32,10 +32,19 @@ class B2BiProxy
         if (empty($url)) {
             $url = $this->proxyUrl;
         }
-
+        $data = $this->getA1001Header().$xml;
         // TODO: 处理中转的错误
-        $result =  XmlCurlHelper::postXml($url, $xml, $timeout);
+        $result =  XmlCurlHelper::postXml($url, $data, $timeout);
         return $result;
+    }
+
+    /**
+     * A1001报文头添加
+     * @return  string
+     */
+    public function getA1001Header()
+    {
+        return "";
     }
 
     public function getError()

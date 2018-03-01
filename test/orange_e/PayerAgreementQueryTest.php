@@ -7,26 +7,39 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  * Revision History Version
  ********1.0.0********************
- * file created @ 2018-02-11 13:44
+ * file created @ 2018-03-01 10:29
  *********************************
  ********1.0.1********************
  *
  *********************************
  */
 
-namespace byTest\component\pabank\xml;
+namespace byTest\component\pabank\orange_e;
+
 
 use by\component\pabank\config\MobileTest2Config;
-use by\component\pabank\helper\XmlHelper;
+use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryApi;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryReq;
 use PHPUnit\Framework\TestCase;
 
-class XmlHelperTest extends TestCase
+class PayerAgreementQueryTest extends TestCase
 {
     /**
      * @throws \ReflectionException
      */
-    public function testLoad()
+    public function testCall()
+    {
+        $config = new MobileTest2Config();
+        $req = $this->getReq();
+        $api = new PayerAgreementQueryApi($config);
+        $result = $api->call($req);
+        var_dump($result);
+    }
+
+    /**
+     * @return PayerAgreementQueryReq
+     */
+    private function getReq()
     {
         $req = new PayerAgreementQueryReq();
         $req->setPageNo(0);
@@ -39,12 +52,6 @@ class XmlHelperTest extends TestCase
         $req->setEndDate('20170501');
         $req->setStartDate('20170201');
         $req->setSrcAccNo('1100');
-
-        $xml = XmlHelper::getXmlFromObject($req);
-        var_dump($xml);
-        $config = new MobileTest2Config();
-
-//        $result = XmlCurlHelper::postXml($config->getBaseApiUrl(), $req->toXml());
-//        var_dump($result);
+        return $req;
     }
 }
