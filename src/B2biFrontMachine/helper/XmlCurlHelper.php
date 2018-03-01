@@ -27,10 +27,11 @@ class XmlCurlHelper
         $header = [];
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type:text/xml; charset=utf-8"));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type:text/xml; charset=gbk"));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);//Post提交的数据包
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout); // 设置cURL允许执行的最长秒数
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($ch, CURLOPT_HEADER, $header);
         $result = curl_exec($ch);
         $err = curl_error($ch);
@@ -38,7 +39,6 @@ class XmlCurlHelper
         if (!empty($err)) {
             return CallResultHelper::fail('[CURL]'.$err, '[REPLY]'.$result);
         }
-
         return CallResultHelper::success($result);
     }
 }

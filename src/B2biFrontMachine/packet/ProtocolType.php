@@ -14,7 +14,7 @@
  *********************************
  */
 
-namespace by\component\pabank\packet;
+namespace by\component\pabank\B2biFrontMachine\packet;
 
 
 class ProtocolType

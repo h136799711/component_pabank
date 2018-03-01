@@ -24,16 +24,16 @@ namespace by\component\pabank\config;
  *  9. 移动收款测试数据
  * @package by\component\pabank\config
  */
-class MobileTest2Config extends BaseConfig
+class MobileTest1Config extends BaseConfig
 {
 
     public function __construct()
     {
         $this->setB2biProxyUri("http://39.104.59.25:7072");
         $this->setBaseApiUrl("http://39.104.59.25:7072");
-        $this->setAccountName('企业网银测试专用一');
-        $this->setAccountNo('00401210100009527000');
-        $this->setAgreementAcc('15000009150665');
-        $this->setAgreementNo('Y000227935');
+        $this->setAccountName('平安测试六零零零五四二九七七七六');
+        $this->setAccountNo('00901079800000088000');
+        $this->setAgreementAcc('11014727214006');
+        $this->setAgreementNo('Y000136249');
     }
 }

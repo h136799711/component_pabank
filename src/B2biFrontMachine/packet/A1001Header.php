@@ -14,7 +14,7 @@
  *********************************
  */
 
-namespace by\component\pabank\packet;
+namespace by\component\pabank\B2biFrontMachine\packet;
 
 
 use by\infrastructure\helper\CallResultHelper;
@@ -25,8 +25,8 @@ class A1001Header
 
     public function parseFrom($str)
     {
-        if (strlen($str) !== A1001Header::EXPECT_LENGTH) {
-            return CallResultHelper::fail('[A1001Header]无法解析,长度不为'.A1001Header::EXPECT_LENGTH);
+        if (strlen($str) < A1001Header::EXPECT_LENGTH) {
+            return CallResultHelper::fail('[A1001Header]无法解析,长度必须大于'.A1001Header::EXPECT_LENGTH);
         }
         $this->setVersion(substr($str, 0, 4));
         $this->setTarget(substr($str, 4, 2));
@@ -49,7 +49,11 @@ class A1001Header
         $this->setSignAlg(substr($str, 199, 12));
         $this->setSignLength(substr($str, 211, 10));
         $this->setAttachment(substr($str, 221, 1));
-
+        if (strlen($str) - 222 > 0) {
+            $this->setBody(substr($str, 222, strlen($str) - 222));
+        } else {
+            $this->setBody('');
+        }
         return CallResultHelper::success($this);
     }
 
@@ -61,16 +65,16 @@ class A1001Header
         return $str;
     }
 
-    public function __construct($reqId, $dataLength, $outreachCustomerCode, $target = TargetSystemCodeType::OrangeESystem, $tradeCode = '000000')
+    public function __construct($tradeCode, $reqId, $dataLength, $outreachCustomerCode, $target = TargetSystemCodeType::OrangeESystem)
     {
         $this->setTarget($target);
         $this->setOutreachCustomerCode($outreachCustomerCode);
-        $this->setTradeCode($tradeCode);
+        $this->setTradeCode(str_pad($tradeCode, "6", " ", STR_PAD_RIGHT));
         $this->setReqId($reqId);
         $this->setPacketLen($dataLength);
 
         $this->setVersion("A001");
-        $this->setEncoding(PacketEncodingType::GBK);
+        $this->setEncoding(PacketEncodingType::UTF8);
         $this->setProtocol(ProtocolType::HTTP);
         $this->setOperatorCode('00000');
         $this->setServiceType("01");
@@ -85,6 +89,27 @@ class A1001Header
         $this->setSignAlg('RSA-SHA1    ');
         $this->setSignLength('0000000000');
         $this->setAttachment("0");
+    }
+
+    /**
+     * 主体内容
+     */
+    private $body;
+
+    /**
+     * @return mixed
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * @param mixed $body
+     */
+    public function setBody($body)
+    {
+        $this->body = $body;
     }
 
     /**

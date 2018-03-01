@@ -19,21 +19,21 @@ namespace by\component\pabank\config;
 /**
  * Class TestConfig
  * 移动端测试环境下配置
- * 测试数据2
+ * 测试数据3
  * 参考 新核心ST_平安银行银企直连测试环境数据20161215.doc
  *  9. 移动收款测试数据
  * @package by\component\pabank\config
  */
-class MobileTest2Config extends BaseConfig
+class MobileTest3Config extends BaseConfig
 {
 
     public function __construct()
     {
         $this->setB2biProxyUri("http://39.104.59.25:7072");
         $this->setBaseApiUrl("http://39.104.59.25:7072");
-        $this->setAccountName('企业网银测试专用一');
-        $this->setAccountNo('00401210100009527000');
-        $this->setAgreementAcc('15000009150665');
-        $this->setAgreementNo('Y000227935');
+        $this->setAccountName('平安测试六零零零四一六零八四九一');
+        $this->setAccountNo('00901079800000098000');
+        $this->setAgreementAcc('11014748658003');
+        $this->setAgreementNo('Y000128002');
     }
 }

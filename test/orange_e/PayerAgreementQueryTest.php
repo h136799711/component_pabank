@@ -17,9 +17,12 @@
 namespace byTest\component\pabank\orange_e;
 
 
+use by\component\pabank\config\MobileTest1Config;
 use by\component\pabank\config\MobileTest2Config;
+use by\component\pabank\config\MobileTest3Config;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryApi;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryReq;
+use by\component\pabank\packet\A1001Header;
 use PHPUnit\Framework\TestCase;
 
 class PayerAgreementQueryTest extends TestCase
@@ -29,11 +32,20 @@ class PayerAgreementQueryTest extends TestCase
      */
     public function testCall()
     {
-        $config = new MobileTest2Config();
+        $config = new MobileTest1Config();
+//        $config = new MobileTest2Config();
+        $config = new MobileTest3Config();
         $req = $this->getReq();
+        $req->setSrcAccNo($config->getAgreementAcc());
+        $req->setAGREE_NO('');
         $api = new PayerAgreementQueryApi($config);
+        var_dump($req->toXml());
         $result = $api->call($req);
+        $header = $result->getData();
         var_dump($result);
+        if ($header instanceof A1001Header) {
+            var_dump(mb_convert_encoding($header->getRetDesc() , "gbk", "utf-8"));
+        }
     }
 
     /**
@@ -42,16 +54,19 @@ class PayerAgreementQueryTest extends TestCase
     private function getReq()
     {
         $req = new PayerAgreementQueryReq();
-        $req->setPageNo(0);
-        $req->setAGREE_NO('110');
-        $req->setBusiType('110');
-        $req->setStatus('1');
-        $req->setOppAccName('3');
-        $req->setOppAccNo('2');
-        $req->setMobile('18557515452');
-        $req->setEndDate('20170501');
-        $req->setStartDate('20170201');
-        $req->setSrcAccNo('1100');
+        $req->setPageNo(1);
+        $req->setBusiType('');
+        $req->setOppAccName('');
+        $req->setMobile('');
+        $req->setStartDate('');
+        $req->setEndDate('');
+//        $req->setMobile('18557515452');
+//        $req->setAGREE_NO('110');
+//        $req->setStatus('0');
+//        $req->setOppAccName('3');
+//        $req->setEndDate('20180301');
+//        $req->setStartDate('20180301');
+//        $req->setSrcAccNo('1100');
         return $req;
     }
 }

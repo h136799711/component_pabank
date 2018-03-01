@@ -71,6 +71,7 @@ abstract class BaseConfig
     }
 
     /**
+     * 户名
      * @return mixed
      */
     public function getAccountName()
@@ -79,6 +80,7 @@ abstract class BaseConfig
     }
 
     /**
+     * 户名
      * @param mixed $accountName
      */
     public function setAccountName($accountName)
@@ -87,6 +89,7 @@ abstract class BaseConfig
     }
 
     /**
+     * 账户名
      * @return mixed
      */
     public function getAccountNo()
@@ -95,6 +98,7 @@ abstract class BaseConfig
     }
 
     /**
+     * 账户名
      * @param mixed $accountNo
      */
     public function setAccountNo($accountNo)

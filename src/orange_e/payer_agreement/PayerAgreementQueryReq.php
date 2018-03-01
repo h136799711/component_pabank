@@ -24,6 +24,8 @@ use by\component\pabank\base\BaseReq;
  */
 class PayerAgreementQueryReq extends BaseReq
 {
+    const TradeCode = "4028  ";
+
     private $srcAccNo;
     private $startDate;
     private $endDate;
@@ -40,7 +42,6 @@ class PayerAgreementQueryReq extends BaseReq
         $this->setBusiType("M8PAK");// 默认为该值
         $this->setStatus(0);// 0是正常 截止20180211, 只支持这个0正常状态
         $this->setPageNo(1);
-        $this->setEndDate(date('Ymd', time() + 24*3600));
     }
 
     /**

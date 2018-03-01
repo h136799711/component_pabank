@@ -35,6 +35,6 @@ class PayerAgreementQueryApi extends BaseOEApi
     {
         $xml = $agreementQueryReq->toXml('Result');
         $reqId = ReqIdHelper::getOrangeEReqId();
-        return $this->proxy->post($reqId, $this->outreachCustomerCode, $xml);
+        return $this->proxy->post(PayerAgreementQueryReq::TradeCode, $reqId, $this->outreachCustomerCode, $xml);
     }
 }

@@ -7,24 +7,24 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  * Revision History Version
  ********1.0.0********************
- * file created @ 2018-03-01 14:09
+ * file created @ 2018-03-01 14:12
  *********************************
  ********1.0.1********************
  *
  *********************************
  */
 
-namespace by\component\pabank\packet;
+namespace by\component\pabank\B2biFrontMachine\packet;
 
-/**
- * Class TargetSystemCodeType
- * 目标系统类型
- * @package by\component\pabank\packet
- */
-class TargetSystemCodeType
+
+class PacketEncodingType
 {
-    /**
-     * 是银企直连 (01)
-     */
-    const OrangeESystem = "01";
+    const GBK = "01";
+
+    const UTF8 = "02";
+
+    const UNICODE = "03";
+
+    const ISO_8859_1 = "04";
+
 }
