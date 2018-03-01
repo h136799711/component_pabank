@@ -49,12 +49,11 @@ class B2BiProxy
         }
 
         $data = $header.$xml;
-        // TODO: 处理中转的错误
+        // 处理中转的错误
         $result =  XmlCurlHelper::postXml($url, $data, $timeout);
         if ($result->isSuccess()) {
             $strData = $result->getData();
             return (new A1001Header('', '', 0, ''))->parseFrom($strData);
-
         }
         return $result;
     }

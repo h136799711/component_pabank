@@ -17,12 +17,10 @@
 namespace byTest\component\pabank\orange_e;
 
 
+use by\component\pabank\B2biFrontMachine\packet\A1001Header;
 use by\component\pabank\config\MobileTest1Config;
-use by\component\pabank\config\MobileTest2Config;
-use by\component\pabank\config\MobileTest3Config;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryApi;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryReq;
-use by\component\pabank\packet\A1001Header;
 use PHPUnit\Framework\TestCase;
 
 class PayerAgreementQueryTest extends TestCase
@@ -34,7 +32,7 @@ class PayerAgreementQueryTest extends TestCase
     {
         $config = new MobileTest1Config();
 //        $config = new MobileTest2Config();
-        $config = new MobileTest3Config();
+//        $config = new MobileTest3Config();
         $req = $this->getReq();
         $req->setSrcAccNo($config->getAgreementAcc());
         $req->setAGREE_NO('');
