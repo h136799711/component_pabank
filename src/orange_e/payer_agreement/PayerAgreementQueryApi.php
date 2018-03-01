@@ -16,6 +16,7 @@
 
 namespace by\component\pabank\orange_e\payer_agreement;
 
+use by\component\pabank\helper\ReqIdHelper;
 use by\component\pabank\orange_e\base\BaseOEApi;
 
 /**
@@ -33,6 +34,7 @@ class PayerAgreementQueryApi extends BaseOEApi
     public function call(PayerAgreementQueryReq $agreementQueryReq)
     {
         $xml = $agreementQueryReq->toXml('Result');
-        return $this->proxy->post($xml);
+        $reqId = ReqIdHelper::getOrangeEReqId();
+        return $this->proxy->post($reqId, $this->outreachCustomerCode, $xml);
     }
 }

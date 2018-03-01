@@ -30,10 +30,14 @@ class MobileTest2Config extends BaseConfig
     public function __construct()
     {
         $this->setB2biProxyUri("http://39.104.59.25:7072");
-        $this->setBaseApiUrl("http://10.14.56.78:30007");
-        $this->setAccountName('平安测试六零零零五四二九七七七六');
-        $this->setAccountNo('00901079800000088000');
-        $this->setAgreementAcc('11014727214006');
-        $this->setAgreementNo('Y000136249');
+        $this->setBaseApiUrl("http://39.104.59.25:7072");
+//        $this->setAccountName('平安测试六零零零五四二九七七七六');
+//        $this->setAccountNo('00901079800000088000');
+//        $this->setAgreementAcc('11014727214006');
+//        $this->setAgreementNo('Y000136249');
+        $this->setAccountName('企业网银测试专用一');
+        $this->setAccountNo('00401210100009527000');
+        $this->setAgreementAcc('15000009150665');
+        $this->setAgreementNo('Y000227935');
     }
 }

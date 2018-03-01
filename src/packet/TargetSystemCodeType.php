@@ -7,29 +7,24 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  * Revision History Version
  ********1.0.0********************
- * file created @ 2018-03-01 10:24
+ * file created @ 2018-03-01 14:09
  *********************************
  ********1.0.1********************
  *
  *********************************
  */
 
-namespace by\component\pabank\orange_e\base;
+namespace by\component\pabank\packet;
 
-
-use by\component\pabank\B2biFrontMachine\B2BiProxy;
-use by\component\pabank\base\BaseApi;
-use by\component\pabank\config\BaseConfig;
-
-class BaseOEApi extends BaseApi
+/**
+ * Class TargetSystemCodeType
+ * 目标系统类型
+ * @package by\component\pabank\packet
+ */
+class TargetSystemCodeType
 {
-    protected $proxy;
-    protected $outreachCustomerCode;
-
-    public function __construct(BaseConfig $config)
-    {
-        $this->proxy = new B2BiProxy($config->getB2biProxyUri());
-        $this->outreachCustomerCode = $config->getAccountNo();
-    }
-
+    /**
+     * 是银企直连 (01)
+     */
+    const OrangeESystem = "01";
 }

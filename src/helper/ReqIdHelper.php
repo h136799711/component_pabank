@@ -7,29 +7,31 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  * Revision History Version
  ********1.0.0********************
- * file created @ 2018-03-01 10:24
+ * file created @ 2018-03-01 15:17
  *********************************
  ********1.0.1********************
  *
  *********************************
  */
 
-namespace by\component\pabank\orange_e\base;
+namespace by\component\pabank\helper;
 
 
-use by\component\pabank\B2biFrontMachine\B2BiProxy;
-use by\component\pabank\base\BaseApi;
-use by\component\pabank\config\BaseConfig;
-
-class BaseOEApi extends BaseApi
+class ReqIdHelper
 {
-    protected $proxy;
-    protected $outreachCustomerCode;
-
-    public function __construct(BaseConfig $config)
+    /**
+     * 20位
+     */
+    public static function getOrangeEReqId()
     {
-        $this->proxy = new B2BiProxy($config->getB2biProxyUri());
-        $this->outreachCustomerCode = $config->getAccountNo();
-    }
+        $float = microtime(true);
+        $tmp = explode(".", $float);
+        if (is_array($tmp) && count($tmp) == 2 && strlen($tmp[1]) == 4) {
+            $id = date('YmdHis', $tmp[0]).$tmp[1];
+        } else {
+            $id = date('YmdHis').rand(1000, 9999);
+        }
 
+        return 'OE'.$id;
+    }
 }

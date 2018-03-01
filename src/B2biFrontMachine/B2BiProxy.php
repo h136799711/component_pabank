@@ -18,6 +18,8 @@ namespace by\component\pabank\B2biFrontMachine;
 
 
 use by\component\pabank\B2biFrontMachine\helper\XmlCurlHelper;
+use by\component\pabank\packet\A1001Header;
+use by\infrastructure\helper\CallResultHelper;
 
 class B2BiProxy
 {
@@ -28,23 +30,45 @@ class B2BiProxy
         $this->proxyUrl = $proxyUrl;
     }
 
-    public function post($xml, $timeout = 90, $url = '') {
+    /**
+     * @param $reqId
+     * @param $outreachCustomerCode
+     * @param $xml
+     * @param int $timeout
+     * @param string $url
+     * @return \by\infrastructure\base\CallResult
+     */
+    public function post($reqId, $outreachCustomerCode, $xml, $timeout = 90, $url = '') {
         if (empty($url)) {
             $url = $this->proxyUrl;
         }
-        $data = $this->getA1001Header().$xml;
+        $header = $this->getA1001Header($reqId, $outreachCustomerCode, $xml);
+        if (strlen($header) !=  A1001Header::EXPECT_LENGTH) {
+            return CallResultHelper::fail('[B2BI_PROXY]报文头长度为'.strlen($header).',期望为'.A1001Header::EXPECT_LENGTH, $header);
+        }
+
+        $data = $header.$xml;
         // TODO: 处理中转的错误
         $result =  XmlCurlHelper::postXml($url, $data, $timeout);
+        if ($result->isSuccess()) {
+            return (new A1001Header('', 0, ''))->parseFrom($result->getData());
+        }
         return $result;
     }
 
     /**
      * A1001报文头添加
+     * @param $reqId
+     * @param $outreachCustomerCode
+     * @param $xml
      * @return  string
      */
-    public function getA1001Header()
+    public function getA1001Header($reqId, $outreachCustomerCode, $xml)
     {
-        return "";
+        $dataLength = str_pad(strlen($xml), 10, "0", STR_PAD_LEFT);
+
+        $header = new A1001Header($reqId, $dataLength, $outreachCustomerCode);
+        return $header->__toString();
     }
 
     public function getError()
