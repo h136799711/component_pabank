@@ -16,7 +16,6 @@
 
 namespace by\component\pabank\orange_e\payer_agreement;
 
-use by\component\pabank\helper\ReqIdHelper;
 use by\component\pabank\orange_e\base\BaseOEApi;
 
 /**
@@ -28,15 +27,30 @@ class PayerAgreementQueryApi extends BaseOEApi
 {
     /**
      * @param PayerAgreementQueryReq $agreementQueryReq
+     * @param string $reqId
      * @return \by\infrastructure\base\CallResult
      * @throws \ReflectionException
      */
-    public function call(PayerAgreementQueryReq $agreementQueryReq)
+    public function call(PayerAgreementQueryReq $agreementQueryReq, $reqId = '')
     {
-        $xml = $agreementQueryReq->toXml('Result');
-        $reqId = ReqIdHelper::getOrangeEReqId();
-        $ret = $this->proxy->post(PayerAgreementQueryReq::TradeCode, $reqId, $this->outreachCustomerCode, $xml);
-        // TODO: 取出body，并将body转化成 Resp
-        return $ret;
+        return $this->postAndReturnResp(PayerAgreementQueryReq::TradeCode, $agreementQueryReq->toXml(), $reqId);
+    }
+
+    /**
+     * @param $tradeCode
+     * @param $body
+     * @return PayerAgreementQueryResp|null
+     * @throws \ReflectionException
+     */
+    protected function convertToResp($tradeCode, $body) {
+        if ($tradeCode === PayerAgreementQueryReq::TradeCode) {
+            $resp = new PayerAgreementQueryResp();
+            if (!empty($body)) {
+                $resp->fromXml($body);
+            }
+            return $resp;
+        }
+
+        return null;
     }
 }

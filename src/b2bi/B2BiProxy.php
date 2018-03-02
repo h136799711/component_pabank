@@ -14,11 +14,11 @@
  *********************************
  */
 
-namespace by\component\pabank\B2biFrontMachine;
+namespace by\component\pabank\b2bi;
 
 
-use by\component\pabank\B2biFrontMachine\helper\XmlCurlHelper;
-use by\component\pabank\B2biFrontMachine\packet\A1001Header;
+use by\component\pabank\b2bi\helper\XmlCurlHelper;
+use by\component\pabank\b2bi\packet\A1001Header;
 use by\infrastructure\helper\CallResultHelper;
 
 class B2BiProxy

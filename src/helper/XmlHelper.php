@@ -39,11 +39,12 @@ class XmlHelper
         if (empty($properties)) {
             $properties = self::getAllProperties($ref);
         }
+
         foreach ($properties as $vo) {
             if ($vo instanceof \ReflectionProperty) {
-                $propName = ucfirst($vo->getName());
+                $propName = $vo->getName();
             } else {
-                $propName = ucfirst($vo);
+                $propName = $vo;
             }
 
             $key = ucfirst($propName);
@@ -52,6 +53,8 @@ class XmlHelper
                 $method = $ref->getMethod($methodName);
                 if ($method->isPublic() && array_key_exists($key, $data)) {
                     $instance->$methodName($data[$key]);
+                } elseif ($method->isPublic() && array_key_exists($propName, $data)) {
+                    $instance->$methodName($data[$propName]);
                 }
             }
         }
@@ -68,7 +71,7 @@ class XmlHelper
      * @return string
      * @throws \ReflectionException
      */
-    public static function getXmlFromObject($instance, $includeXmlHead = true, $root = 'Result', $encoding = "GBK")
+    public static function getXmlFromObject($instance, $includeXmlHead = true, $root = 'Result', $encoding = "utf-8")
     {
         $xmlHeader = $includeXmlHead ? "<?xml version=\"1.0\" encoding=\"$encoding\" ?>" : "";
         $tagValue = "";

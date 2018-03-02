@@ -24,6 +24,7 @@ use by\component\pabank\helper\XmlHelper;
  */
 abstract class BaseReq
 {
+
     /**
      * 转化为xml
      * @param string $root
@@ -32,7 +33,7 @@ abstract class BaseReq
      * @return string
      * @throws \ReflectionException
      */
-    public function toXml($root = 'RESULT', $includeXmlHead = true, $encoding = "GBK")
+    public function toXml($root = 'Result', $includeXmlHead = true, $encoding = "utf-8")
     {
         return XmlHelper::getXmlFromObject($this, $includeXmlHead, $root, $encoding);
     }

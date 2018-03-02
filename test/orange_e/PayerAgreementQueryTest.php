@@ -17,10 +17,10 @@
 namespace byTest\component\pabank\orange_e;
 
 
-use by\component\pabank\B2biFrontMachine\packet\A1001Header;
 use by\component\pabank\config\MobileTest1Config;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryApi;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryReq;
+use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryResp;
 use PHPUnit\Framework\TestCase;
 
 class PayerAgreementQueryTest extends TestCase
@@ -35,15 +35,21 @@ class PayerAgreementQueryTest extends TestCase
 //        $config = new MobileTest3Config();
         $req = $this->getReq();
         $req->setSrcAccNo($config->getAgreementAcc());
-        $req->setAGREE_NO('');
+//        $req->setOppAccName(mb_convert_encoding('平安测试三', "gbk", "utf-8"));
+        $req->setOppAccName('平安龄龄');
+//        $req->setOppAccNo('6222022017001292665');
         $api = new PayerAgreementQueryApi($config);
-        var_dump($req->toXml());
+
         $result = $api->call($req);
-        $header = $result->getData();
-        var_dump($result);
-        if ($header instanceof A1001Header) {
-            var_dump(mb_convert_encoding($header->getRetDesc() , "gbk", "utf-8"));
+        $data = $result->getData();
+        if ($result->isSuccess() && $data instanceof PayerAgreementQueryResp) {
+            $list = $data->getList();
+            var_dump($list);
+            var_dump(mb_convert_encoding($list[9]['SrcAccName'], "gbk", "utf-8"));
+        } else {
+            var_dump($result);
         }
+
     }
 
     /**

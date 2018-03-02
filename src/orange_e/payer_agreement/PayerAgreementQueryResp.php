@@ -27,7 +27,7 @@ class PayerAgreementQueryResp extends BaseResp
 {
     private $AGREE_NO;
     private $totalNum;
-    private $totalPages;
+    private $totalPage;
     private $perPageNum;
 
     private $list;
@@ -35,7 +35,7 @@ class PayerAgreementQueryResp extends BaseResp
     /**
      * @return mixed
      */
-    public function getAGREENO()
+    public function getAGREE_NO()
     {
         return $this->AGREE_NO;
     }
@@ -43,7 +43,7 @@ class PayerAgreementQueryResp extends BaseResp
     /**
      * @param mixed $AGREE_NO
      */
-    public function setAGREENO($AGREE_NO)
+    public function setAGREE_NO($AGREE_NO)
     {
         $this->AGREE_NO = $AGREE_NO;
     }
@@ -67,17 +67,17 @@ class PayerAgreementQueryResp extends BaseResp
     /**
      * @return mixed
      */
-    public function getTotalPages()
+    public function getTotalPage()
     {
-        return $this->totalPages;
+        return $this->totalPage;
     }
 
     /**
-     * @param mixed $totalPages
+     * @param mixed $totalPage
      */
-    public function setTotalPages($totalPages)
+    public function setTotalPage($totalPage)
     {
-        $this->totalPages = $totalPages;
+        $this->totalPage = $totalPage;
     }
 
     /**

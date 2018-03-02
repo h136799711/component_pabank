@@ -25,6 +25,24 @@ use by\component\pabank\helper\XmlHelper;
  */
 abstract class BaseResp
 {
+    private $header;
+
+    /**
+     * @return mixed
+     */
+    public function getHeader()
+    {
+        return $this->header;
+    }
+
+    /**
+     * @param mixed $header
+     */
+    public function setHeader($header)
+    {
+        $this->header = $header;
+    }
+
     /**
      * 转化为xml
      * @param string $root
@@ -33,7 +51,7 @@ abstract class BaseResp
      * @return string
      * @throws \ReflectionException
      */
-    public function toXml($root = 'RESULT', $includeXmlHead = true, $encoding = "GBK")
+    public function toXml($root = 'Result', $includeXmlHead = true, $encoding = "utf-8")
     {
         return XmlHelper::getXmlFromObject($this, $root, $includeXmlHead, $encoding);
     }

@@ -7,19 +7,24 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  * Revision History Version
  ********1.0.0********************
- * file created @ 2018-03-01 14:13
+ * file created @ 2018-03-01 14:12
  *********************************
  ********1.0.1********************
  *
  *********************************
  */
 
-namespace by\component\pabank\B2biFrontMachine\packet;
+namespace by\component\pabank\b2bi\packet;
 
 
-class ProtocolType
+class PacketEncodingType
 {
-    const TCP_IP = "01";
-    const HTTP = "02";
-    const WEBSERVICE = "03";
+    const GBK = "01";
+
+    const UTF8 = "02";
+
+    const UNICODE = "03";
+
+    const ISO_8859_1 = "04";
+
 }
