@@ -38,7 +38,7 @@ class PayerAgreementSingleManageTest extends TestCase
         $config = new MobileTest2Config();
 //        $config = new MobileTest3Config();
         $req = $this->getReq();
-        $req->setSrcAccNo($config->getAgreementNo());
+        $req->setSrcAccNo($config->getAgreementAcc());
         $req->setSrcAccName($config->getAccountName());
 
         $api = new PayerAgreementSingleManageApi($config);

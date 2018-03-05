@@ -33,7 +33,7 @@ class PayerAgreementQueryApi extends BaseOEApi
      */
     public function call(PayerAgreementQueryReq $agreementQueryReq, $reqId = '')
     {
-        return $this->postAndReturnResp($agreementQueryReq->getTradeCode(), $agreementQueryReq->toXml(), $reqId);
+        return $this->postAndReturnResp(PayerAgreementQueryReq::TradeCode, $agreementQueryReq->toXml(), $reqId);
     }
 
     /**
