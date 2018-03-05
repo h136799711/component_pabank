@@ -38,7 +38,6 @@ class PayerAgreementQueryReq extends BaseOEReq
     private $oppAccNo;
     private $oppAccName;//
     private $mobile;// 付款人手机号
-    private $AGREE_NO;
     private $busiType;
     private $status;
     private $pageNo;
@@ -64,22 +63,6 @@ class PayerAgreementQueryReq extends BaseOEReq
     public function setSrcAccNo($srcAccNo)
     {
         $this->srcAccNo = $srcAccNo;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAGREE_NO()
-    {
-        return $this->AGREE_NO;
-    }
-
-    /**
-     * @param mixed $AGREE_NO
-     */
-    public function setAGREE_NO($AGREE_NO)
-    {
-        $this->AGREE_NO = $AGREE_NO;
     }
 
     /**

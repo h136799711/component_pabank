@@ -42,7 +42,6 @@ class PayerAgreementSingleManageReq extends BaseOEReq
 
     private $srcAccNo;
     private $srcAccName;
-    private $AGREE_NO;
     private $busiType;
     private $tranFlag;//1: 新增 2:修改 3:删除
     private $oppAccNo;
@@ -85,22 +84,6 @@ class PayerAgreementSingleManageReq extends BaseOEReq
     public function setSrcAccName($srcAccName)
     {
         $this->srcAccName = $srcAccName;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAGREE_NO()
-    {
-        return $this->AGREE_NO;
-    }
-
-    /**
-     * @param mixed $AGREE_NO
-     */
-    public function setAGREE_NO($AGREE_NO)
-    {
-        $this->AGREE_NO = $AGREE_NO;
     }
 
     /**

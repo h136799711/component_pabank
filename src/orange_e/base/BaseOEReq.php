@@ -31,4 +31,23 @@ abstract class BaseOEReq extends BaseReq
      * @return mixed
      */
     abstract function getTradeCode();
+
+    private $AGREE_NO;
+
+
+    /**
+     * @return mixed
+     */
+    public function getAGREE_NO()
+    {
+        return $this->AGREE_NO;
+    }
+
+    /**
+     * @param mixed $AGREE_NO
+     */
+    public function setAGREE_NO($AGREE_NO)
+    {
+        $this->AGREE_NO = $AGREE_NO;
+    }
 }
