@@ -71,7 +71,7 @@ abstract class BaseConfig
     }
 
     /**
-     * 户名
+     * 获取户名
      * @return mixed
      */
     public function getAccountName()
@@ -80,7 +80,7 @@ abstract class BaseConfig
     }
 
     /**
-     * 户名
+     * 设置户名
      * @param mixed $accountName
      */
     public function setAccountName($accountName)
@@ -89,7 +89,7 @@ abstract class BaseConfig
     }
 
     /**
-     * 账户名
+     * 获取企业代码
      * @return mixed
      */
     public function getAccountNo()
@@ -98,7 +98,7 @@ abstract class BaseConfig
     }
 
     /**
-     * 账户名
+     * 设置企业代码
      * @param mixed $accountNo
      */
     public function setAccountNo($accountNo)
@@ -107,6 +107,7 @@ abstract class BaseConfig
     }
 
     /**
+     * 获取协议签约账户
      * @return mixed
      */
     public function getAgreementAcc()
@@ -115,6 +116,7 @@ abstract class BaseConfig
     }
 
     /**
+     * 设置协议签约账户
      * @param mixed $agreementAcc
      */
     public function setAgreementAcc($agreementAcc)
@@ -123,6 +125,7 @@ abstract class BaseConfig
     }
 
     /**
+     * 获取协议号
      * @return mixed
      */
     public function getAgreementNo()
@@ -131,6 +134,7 @@ abstract class BaseConfig
     }
 
     /**
+     * 设置协议号
      * @param mixed $agreementNo
      */
     public function setAgreementNo($agreementNo)
