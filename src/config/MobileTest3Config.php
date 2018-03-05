@@ -19,7 +19,10 @@ namespace by\component\pabank\config;
 /**
  * Class TestConfig
  * 移动端测试环境下配置
- * 测试数据3
+ * 测试数据3 (直接发起)
+ *      维护付款人	不需要
+ *      付款人信息认证	不需要
+ *      付款确认	不需要
  * 参考 新核心ST_平安银行银企直连测试环境数据20161215.doc
  *  9. 移动收款测试数据
  * @package by\component\pabank\config

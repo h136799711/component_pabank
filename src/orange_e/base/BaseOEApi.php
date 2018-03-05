@@ -49,7 +49,7 @@ class BaseOEApi extends BaseApi
             if ($header instanceof A1001Header) {
                 $body = $header->getBody();
                 if ($header->getRetCode() != '000000') {
-                    return CallResultHelper::fail(trim($header->getRetDesc()), $header);
+                    return CallResultHelper::fail(trim($header->getRetDesc()), $header, $header->getRetCode());
                 } else {
                     $resp = $this->convertToResp($tradeCode, $body);
                     $resp->setHeader($header);
