@@ -17,6 +17,7 @@
 namespace by\component\pabank\base;
 
 use by\component\pabank\helper\XmlHelper;
+use by\infrastructure\helper\Object2DataArrayHelper;
 
 /**
  * Class BaseResp
@@ -64,5 +65,14 @@ abstract class BaseResp
     public function fromXml($xml)
     {
         XmlHelper::setObjectFromXml($this, $xml);
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode(Object2DataArrayHelper::getDataArrayFrom($this));
     }
 }
