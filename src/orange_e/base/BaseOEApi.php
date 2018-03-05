@@ -48,9 +48,13 @@ class BaseOEApi extends BaseApi
             $header = $ret->getData();
             if ($header instanceof A1001Header) {
                 $body = $header->getBody();
-                $resp = $this->convertToResp($tradeCode, $body);
-                $resp->setHeader($header);
-                return CallResultHelper::success($resp);
+                if ($header->getRetCode() != '000000') {
+                    return CallResultHelper::fail($header->getRetDesc(), $header);
+                } else {
+                    $resp = $this->convertToResp($tradeCode, $body);
+                    $resp->setHeader($header);
+                    return CallResultHelper::success($resp);
+                }
             } else {
                 return CallResultHelper::fail("[BASEOEAPI] 内容必须是A1001Header对象", $ret->getData());
             }
