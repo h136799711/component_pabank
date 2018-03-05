@@ -26,15 +26,15 @@ class CardTypeFlag
     /**
      * 借记卡
      */
-    const DebitCard = "0 ";
+    const DebitCard = "0";
 
     /**
      * 存折
      */
-    const DepositBook = "1 ";
+    const DepositBook = "1";
 
     /**
      * 对公账户
      */
-    const ToThePublicAccount = "2 ";
+    const ToThePublicAccount = "2";
 }
