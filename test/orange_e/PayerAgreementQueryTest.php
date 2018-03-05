@@ -17,10 +17,7 @@
 namespace byTest\component\pabank\orange_e;
 
 
-use by\component\pabank\config\MobileTest3Config;
-use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryApi;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryReq;
-use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryResp;
 use PHPUnit\Framework\TestCase;
 
 class PayerAgreementQueryTest extends TestCase
@@ -32,23 +29,23 @@ class PayerAgreementQueryTest extends TestCase
     {
 //        $config = new MobileTest1Config();
 //        $config = new MobileTest2Config();
-        $config = new MobileTest3Config();
-        $req = $this->getReq();
-        $req->setSrcAccNo($config->getAgreementAcc());
+//        $config = new MobileTest3Config();
+//        $req = $this->getReq();
+//        $req->setSrcAccNo($config->getAgreementAcc());
 //        $req->setOppAccName(mb_convert_encoding('平安测试三', "gbk", "utf-8"));
-        $req->setOppAccName('平安龄龄');
+//        $req->setOppAccName('平安龄龄');
 //        $req->setOppAccNo('6222022017001292665');
-        $api = new PayerAgreementQueryApi($config);
+//        $api = new PayerAgreementQueryApi($config);
 
-        $result = $api->call($req);
-        $data = $result->getData();
-        if ($result->isSuccess() && $data instanceof PayerAgreementQueryResp) {
-            $list = $data->getList();
-            var_dump($list);
-            var_dump(mb_convert_encoding($list[9]['SrcAccName'], "gbk", "utf-8"));
-        } else {
-            var_dump($result);
-        }
+//        $result = $api->call($req);
+//        $data = $result->getData();
+//        if ($result->isSuccess() && $data instanceof PayerAgreementQueryResp) {
+//            $list = $data->getList();
+//            var_dump($list);
+//            var_dump(mb_convert_encoding($list[9]['SrcAccName'], "gbk", "utf-8"));
+//        } else {
+//            var_dump($result);
+//        }
 
     }
 

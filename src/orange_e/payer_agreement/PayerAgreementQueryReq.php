@@ -16,15 +16,21 @@
 
 namespace by\component\pabank\orange_e\payer_agreement;
 
-use by\component\pabank\base\BaseReq;
+use by\component\pabank\orange_e\base\BaseOEReq;
 
 /**
  * Class PayerAgreementQueryReq
  * @package by\component\pabank\orange_e\payer_agreement
  */
-class PayerAgreementQueryReq extends BaseReq
+class PayerAgreementQueryReq extends BaseOEReq
 {
     const TradeCode = "4028  ";
+
+    function getTradeCode()
+    {
+        return PayerAgreementQueryReq::TradeCode;
+    }
+
 
     private $srcAccNo;
     private $startDate;

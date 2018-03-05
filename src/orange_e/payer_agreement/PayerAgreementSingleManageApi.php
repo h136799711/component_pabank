@@ -19,32 +19,32 @@ namespace by\component\pabank\orange_e\payer_agreement;
 use by\component\pabank\orange_e\base\BaseOEApi;
 
 /**
- * Class PayerAgreementQueryApi
- * 付款协议查询
+ * Class PayerAgreementSingleManageApi
+ * 付款人协议单笔维护
  * @package by\component\pabank\orange_e\payer_agreement
  */
-class PayerAgreementQueryApi extends BaseOEApi
+class PayerAgreementSingleManageApi extends BaseOEApi
 {
     /**
-     * @param PayerAgreementQueryReq $agreementQueryReq
+     * @param PayerAgreementSingleManageReq $agreementQueryReq
      * @param string $reqId
      * @return \by\infrastructure\base\CallResult
      * @throws \ReflectionException
      */
-    public function call(PayerAgreementQueryReq $agreementQueryReq, $reqId = '')
+    public function call(PayerAgreementSingleManageReq $agreementQueryReq, $reqId = '')
     {
-        return $this->postAndReturnResp($agreementQueryReq->getTradeCode(), $agreementQueryReq->toXml(), $reqId);
+        return $this->postAndReturnResp(PayerAgreementSingleManageReq::TradeCode, $agreementQueryReq->toXml(), $reqId);
     }
 
     /**
      * @param $tradeCode
      * @param $body
-     * @return PayerAgreementQueryResp|null
+     * @return PayerAgreementSingleManageResp|null
      * @throws \ReflectionException
      */
     protected function convertToResp($tradeCode, $body) {
-        if ($tradeCode === PayerAgreementQueryReq::TradeCode) {
-            $resp = new PayerAgreementQueryResp();
+        if ($tradeCode === PayerAgreementSingleManageReq::TradeCode) {
+            $resp = new PayerAgreementSingleManageResp();
             if (!empty($body)) {
                 $resp->fromXml($body);
             }

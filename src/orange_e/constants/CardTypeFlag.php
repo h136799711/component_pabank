@@ -7,7 +7,7 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  * Revision History Version
  ********1.0.0********************
- * file created @ 2018-02-09 15:10
+ * file created @ 2018-03-05 14:52
  *********************************
  ********1.0.1********************
  *
@@ -17,49 +17,24 @@
 namespace by\component\pabank\orange_e\constants;
 
 /**
- * Class CertificationType
- * 证件类型
+ * Class CardTypeFlag
+ * 卡类型
  * @package by\component\pabank\orange_e\constants
  */
-class CertificationType
+class CardTypeFlag
 {
     /**
-     * 其他个人证件
+     * 借记卡
      */
-    const OTHER = 0;
+    const DebitCard = "0 ";
 
     /**
-     * 身份证
+     * 存折
      */
-    const ID_CARD = 1;
+    const DepositBook = "1 ";
 
     /**
-     * 军官证
+     * 对公账户
      */
-    const CERTIFICATE_OF_OFFICERS = 2;
-
-    /**
-     * 港澳台通行证
-     */
-    const HKMT_RESIDENTS_PASS = 3;
-
-    /**
-     * 中国护照
-     */
-    const CHINESE_PASSPORT = 4;
-
-    /**
-     * 户口本
-     */
-    const HOUSEHOLD_REGISTER_BOOK = 11;
-
-    /**
-     * 组织机构代码证
-     */
-    const ORGANIZATION_CODE = 995;
-
-    /**
-     * 统一社会信用代码
-     */
-    const SOCIAL_CREDIT_CODE = 999;
+    const ToThePublicAccount = "2 ";
 }
