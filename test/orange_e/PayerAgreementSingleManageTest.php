@@ -21,6 +21,7 @@ use by\component\pabank\config\MobileTest2Config;
 use by\component\pabank\orange_e\constants\BankType;
 use by\component\pabank\orange_e\constants\CardTypeFlag;
 use by\component\pabank\orange_e\constants\CertificationType;
+use by\component\pabank\orange_e\constants\PayerAgreeTranFlag;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementSingleManageApi;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementSingleManageReq;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementSingleManageResp;
@@ -37,9 +38,19 @@ class PayerAgreementSingleManageTest extends TestCase
 //        $config = new MobileTest1Config();
         $config = new MobileTest2Config();
 //        $config = new MobileTest3Config();
-        $req = $this->getReq();
+        // add
+//        $req = $this->getReq();
+        // delete
+//        $req = $this->getReqForDelete();
+//        $req->setDetailNo("1000000434");
+        //update
+        $req = $this->getReqForUpdate();
+        $req->setDetailNo("1000000436");
+
         $req->setSrcAccNo($config->getAgreementAcc());
         $req->setSrcAccName($config->getAccountName());
+        $req->setSrcAccNo("11014727214006");
+        $req->setSrcAccName("平安测试六零零零五四二九七七七六");
 
         $api = new PayerAgreementSingleManageApi($config);
 
@@ -68,8 +79,46 @@ class PayerAgreementSingleManageTest extends TestCase
         $req->setIdType(CertificationType::ID_CARD);
         $req->setIdNo('341126197709218366');
         $req->setCardAcctFlag(CardTypeFlag::DebitCard);
-        $req->setTranFlag("1");
-        $req->setRemark('测试');
+        $req->setTranFlag(PayerAgreeTranFlag::ADD);
+        $req->setRemark('测试by-hebidu');
+        return $req;
+    }
+
+    /**
+     * @return PayerAgreementSingleManageReq
+     */
+    private function getReqForDelete()
+    {
+        $req = new PayerAgreementSingleManageReq();
+        // 行内
+        $req->setOppBank(BankType::PING_AN_Bank);
+        $req->setOppAccName('互联网');
+        $req->setOppAccNo('6221558812340000');
+        $req->setMobile("13552535506");
+        $req->setIdType(CertificationType::ID_CARD);
+        $req->setIdNo('341126197709218366');
+        $req->setCardAcctFlag(CardTypeFlag::DebitCard);
+        $req->setTranFlag(PayerAgreeTranFlag::DELETE);
+        $req->setRemark('测试by-hebidu');
+        return $req;
+    }
+    /**
+     * @return PayerAgreementSingleManageReq
+     */
+    private function getReqForUpdate()
+    {
+        $req = new PayerAgreementSingleManageReq();
+        // 行内
+        $req->setOppBank(BankType::CC_BANK);
+        $req->setOppAccName('王老五2');
+        $req->setOppAccNo('62266206077922077');
+        $req->setMobile("13552535506");
+        $req->setIdType(CertificationType::ID_CARD);
+        $req->setIdNo('340102198212062037');
+        $req->setCardAcctFlag(CardTypeFlag::DebitCard);
+        $req->setTranFlag(PayerAgreeTranFlag::UPDATE);
+        $req->setRemark('test_for_update');
+        $req->setDetailNo('1000000429');
         return $req;
     }
 }

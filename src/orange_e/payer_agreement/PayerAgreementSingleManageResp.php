@@ -16,7 +16,7 @@
 
 namespace by\component\pabank\orange_e\payer_agreement;
 
-use by\component\pabank\base\BaseReq;
+use by\component\pabank\base\BaseResp;
 
 /**
  * Class PayerAgreementSingleManageResp
@@ -24,7 +24,7 @@ use by\component\pabank\base\BaseReq;
  * 单笔维护: 包含 新增、修改、删除
  * @package by\component\pabank\orange_e\payer_agreement
  */
-class PayerAgreementSingleManageResp extends BaseReq
+class PayerAgreementSingleManageResp extends BaseResp
 {
     const TradeCode = "4029  ";
     private $AGREE_NO;
