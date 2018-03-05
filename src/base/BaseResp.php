@@ -18,13 +18,14 @@ namespace by\component\pabank\base;
 
 use by\component\pabank\helper\XmlHelper;
 use by\infrastructure\helper\Object2DataArrayHelper;
+use by\infrastructure\interfaces\ObjectToArrayInterface;
 
 /**
  * Class BaseResp
  * 响应基础
  * @package by\component\base
  */
-abstract class BaseResp
+abstract class BaseResp implements ObjectToArrayInterface
 {
     private $header;
 
@@ -80,7 +81,7 @@ abstract class BaseResp
      *
      * @return array
      */
-    public function __toArray()
+    public function toArray()
     {
         return Object2DataArrayHelper::getDataArrayFrom($this);
     }
