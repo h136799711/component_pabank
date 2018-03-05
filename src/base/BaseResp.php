@@ -75,4 +75,13 @@ abstract class BaseResp
     {
         return json_encode(Object2DataArrayHelper::getDataArrayFrom($this));
     }
+
+    /**
+     *
+     * @return array
+     */
+    public function __toArray()
+    {
+        return Object2DataArrayHelper::getDataArrayFrom($this);
+    }
 }
