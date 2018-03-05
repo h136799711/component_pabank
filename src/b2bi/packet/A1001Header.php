@@ -41,7 +41,7 @@ class A1001Header
         $this->setTradeTime(substr($str, 61, 6));
         $this->setReqId(substr($str, 67, 20));
         $this->setRetCode(substr($str, 87, 6));
-        $this->setRetDesc(substr($str, 93, 100));
+        $this->setRetDesc(trim(substr($str, 93, 100)));
         $this->setContinuePackFlag(substr($str, 193, 1));
         $this->setReqNum(substr($str, 194, 3));
         $this->setSignPackId(substr($str, 197, 1));

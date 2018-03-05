@@ -17,7 +17,7 @@
 namespace byTest\component\pabank\orange_e;
 
 
-use by\component\pabank\config\MobileTest1Config;
+use by\component\pabank\config\MobileTest3Config;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryApi;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryReq;
 use by\component\pabank\orange_e\payer_agreement\PayerAgreementQueryResp;
@@ -30,9 +30,9 @@ class PayerAgreementQueryTest extends TestCase
      */
     public function testCall()
     {
-        $config = new MobileTest1Config();
+//        $config = new MobileTest1Config();
 //        $config = new MobileTest2Config();
-//        $config = new MobileTest3Config();
+        $config = new MobileTest3Config();
         $req = $this->getReq();
         $req->setSrcAccNo($config->getAgreementAcc());
 //        $req->setOppAccName(mb_convert_encoding('平安测试三', "gbk", "utf-8"));
