@@ -77,7 +77,19 @@ class XmlHelper
         $tagValue = "";
         $data = self::getData($instance);
         foreach ($data as $key => $val) {
-            $tagValue .= self::getTag(ucfirst($key), $val);
+            if (is_array($val)) {
+                foreach ($val as $arrKey => $arrValue) {
+                    $arrXml = '';
+                    if (is_array($arrValue)) {
+                        foreach ($arrValue as $arrValueKey => $arrValueValue) {
+                            $arrXml .= self::getTag(ucfirst($arrValueKey), $arrValueValue);
+                        }
+                    }
+                    $tagValue .= self::getTag(ucfirst($key), $arrXml);
+                }
+            } else {
+                $tagValue .= self::getTag(ucfirst($key), $val);
+            }
         }
 
         return $xmlHeader.self::getTag($root, $tagValue);

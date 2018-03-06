@@ -17,6 +17,8 @@
 namespace by\component\pabank\orange_e\payer_agreement;
 
 use by\component\pabank\orange_e\base\BaseOEReq;
+use by\component\pabank\orange_e\constants\CardTypeFlag;
+use by\component\pabank\orange_e\constants\CertificationType;
 
 /**
  * Class PayerAgreementManageReq
@@ -26,20 +28,66 @@ use by\component\pabank\orange_e\base\BaseOEReq;
 class PayerAgreementManageReq extends BaseOEReq
 {
     const TradeCode = "4030  ";
+
     private $srcAccNo;
     private $busiType;
-private $tranFlag;
-private $totalNum;
+    private $tranFlag;//1: 新增 2:替换全部 3:删除 4: 清空
+    private $totalNum;//总笔数
+    private $hOResultSet4030R;
 
     public function __construct()
     {
         $this->setBusiType("M8PAK");
-    }//1: 新增 2:替换全部 3:删除 4: 清空
+        $this->setHOResultSet4030R([]);
+    }
+
+    /**
+     * 添加一笔明细
+     * @param string $oppAccNo   银行卡号
+     * @param string $oppAccName 姓名
+     * @param string $oppBank    银行卡类别
+     * @param string $mobile     手机号
+     * @param string $idNo       证件号码
+     * @param string $idType     证件类型：默认 身份证
+     * @param string $cardAcctFlag 银行卡类别：默认 借记卡
+     */
+    public function addItem($oppAccNo, $oppAccName, $oppBank, $mobile, $idNo, $idType = CertificationType::ID_CARD, $cardAcctFlag = CardTypeFlag::DebitCard)
+    {
+        array_push($this->hOResultSet4030R, [
+            'oppAccNo' => $oppAccNo,
+            'oppAccName' => $oppAccName,
+            'oppBank' => $oppBank,
+            'mobile' => $mobile,
+            'idNo' => $idNo,
+            'idType' => $idType,
+            'cardAcctFlag' => $cardAcctFlag,
+        ]);
+        $this->setTotalNum(strval(count($this->hOResultSet4030R)));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHOResultSet4030R()
+    {
+        return $this->hOResultSet4030R;
+    }
+
+    /**
+     * @param mixed $hOResultSet4030R
+     */
+    public function setHOResultSet4030R($hOResultSet4030R)
+    {
+        if (is_array($hOResultSet4030R)) {
+            $this->hOResultSet4030R = $hOResultSet4030R;
+            $this->setTotalNum(strval(count($this->hOResultSet4030R)));
+        }
+    }
 
     function getTradeCode()
     {
         return PayerAgreementManageReq::TradeCode;
-    }//总笔数
+    }
 
     /**
      * @return mixed

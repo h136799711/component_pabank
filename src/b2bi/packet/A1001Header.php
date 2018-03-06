@@ -18,10 +18,18 @@ namespace by\component\pabank\b2bi\packet;
 
 
 use by\infrastructure\helper\CallResultHelper;
+use by\infrastructure\helper\Object2DataArrayHelper;
+use by\infrastructure\interfaces\ObjectToArrayInterface;
 
-class A1001Header
+class A1001Header implements ObjectToArrayInterface
 {
     const EXPECT_LENGTH = 222;
+
+    public function toArray()
+    {
+        return Object2DataArrayHelper::getDataArrayFrom($this);
+    }
+
 
     public function parseFrom($str)
     {
