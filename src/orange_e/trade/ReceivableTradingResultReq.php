@@ -32,7 +32,7 @@ class ReceivableTradingResultReq extends BaseOEReq
 
     function getTradeCode()
     {
-        return ReceivableTradingReq::TradeCode;
+        return ReceivableTradingResultReq::TradeCode;
     }
 
     /**
