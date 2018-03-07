@@ -10,6 +10,9 @@
          processIsolation="false"
          stopOnFailure="true"
          syntaxCheck="false">
+    <testsuite name="trade">
+        <directory>./test/trade</directory>
+    </testsuite>
 
     <testsuite name="orange_e">
         <directory>./test/orange_e</directory>
