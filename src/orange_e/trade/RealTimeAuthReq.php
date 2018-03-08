@@ -28,41 +28,68 @@ class RealTimeAuthReq extends BaseOEReq
 {
     const TradeCode = "4036  ";
 
-    private $thirdVoucher;
+    private $srcAccNo;
+    private $busiId;
     private $busiType;
-    private $startDate;
-    private $endDate;
-    private $cstInnerFlowNo;
+    private $bankCode;
     private $oppAccNo;
     private $oppAccName;
-    private $pageSize;
-    private $pageNum;
+    private $sex;
+    private $idType;
+    private $idNo;
+    private $birthDate;
+    private $mobile;
+    private $dcType;
+    private $cVV2;
+    private $cardValidPeriod;
+    private $verifyType;
+    private $remark;
+
 
 
     // construct
     public function __construct()
     {
+        $this->setBusiId('');
+        $this->setAGREE_NO('');
+        $this->setBusiType('M8PAK');
     }
 
     function getTradeCode()
     {
-        return ReceivableTradingQueryReq::TradeCode;
+        return RealTimeAuthReq::TradeCode;
     }
 
     /**
      * @return mixed
      */
-    public function getThirdVoucher()
+    public function getSrcAccNo()
     {
-        return $this->thirdVoucher;
+        return $this->srcAccNo;
     }
 
     /**
-     * @param mixed $thirdVoucher
+     * @param mixed $srcAccNo
      */
-    public function setThirdVoucher($thirdVoucher)
+    public function setSrcAccNo($srcAccNo)
     {
-        $this->thirdVoucher = $thirdVoucher;
+        $this->srcAccNo = $srcAccNo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBusiId()
+    {
+        return $this->busiId;
+    }
+
+    /**
+     * @param mixed $busiId
+     */
+    public function setBusiId($busiId)
+    {
+        $this->busiId = $busiId;
     }
 
     /**
@@ -84,49 +111,17 @@ class RealTimeAuthReq extends BaseOEReq
     /**
      * @return mixed
      */
-    public function getStartDate()
+    public function getBankCode()
     {
-        return $this->startDate;
+        return $this->bankCode;
     }
 
     /**
-     * @param mixed $startDate
+     * @param mixed $bankCode
      */
-    public function setStartDate($startDate)
+    public function setBankCode($bankCode)
     {
-        $this->startDate = $startDate;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
-    }
-
-    /**
-     * @param mixed $endDate
-     */
-    public function setEndDate($endDate)
-    {
-        $this->endDate = $endDate;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCstInnerFlowNo()
-    {
-        return $this->cstInnerFlowNo;
-    }
-
-    /**
-     * @param mixed $cstInnerFlowNo
-     */
-    public function setCstInnerFlowNo($cstInnerFlowNo)
-    {
-        $this->cstInnerFlowNo = $cstInnerFlowNo;
+        $this->bankCode = $bankCode;
     }
 
     /**
@@ -164,32 +159,160 @@ class RealTimeAuthReq extends BaseOEReq
     /**
      * @return mixed
      */
-    public function getPageSize()
+    public function getSex()
     {
-        return $this->pageSize;
+        return $this->sex;
     }
 
     /**
-     * @param mixed $pageSize
+     * @param mixed $sex
      */
-    public function setPageSize($pageSize)
+    public function setSex($sex)
     {
-        $this->pageSize = $pageSize;
+        $this->sex = $sex;
     }
 
     /**
      * @return mixed
      */
-    public function getPageNum()
+    public function getIdType()
     {
-        return $this->pageNum;
+        return $this->idType;
     }
 
     /**
-     * @param mixed $pageNum
+     * @param mixed $idType
      */
-    public function setPageNum($pageNum)
+    public function setIdType($idType)
     {
-        $this->pageNum = $pageNum;
+        $this->idType = $idType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdNo()
+    {
+        return $this->idNo;
+    }
+
+    /**
+     * @param mixed $idNo
+     */
+    public function setIdNo($idNo)
+    {
+        $this->idNo = $idNo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * @param mixed $birthDate
+     */
+    public function setBirthDate($birthDate)
+    {
+        $this->birthDate = $birthDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * @param mixed $mobile
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDcType()
+    {
+        return $this->dcType;
+    }
+
+    /**
+     * @param mixed $dcType
+     */
+    public function setDcType($dcType)
+    {
+        $this->dcType = $dcType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCVV2()
+    {
+        return $this->cVV2;
+    }
+
+    /**
+     * @param mixed $cVV2
+     */
+    public function setCVV2($cVV2)
+    {
+        $this->cVV2 = $cVV2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCardValidPeriod()
+    {
+        return $this->cardValidPeriod;
+    }
+
+    /**
+     * @param mixed $cardValidPeriod
+     */
+    public function setCardValidPeriod($cardValidPeriod)
+    {
+        $this->cardValidPeriod = $cardValidPeriod;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVerifyType()
+    {
+        return $this->verifyType;
+    }
+
+    /**
+     * @param mixed $verifyType
+     */
+    public function setVerifyType($verifyType)
+    {
+        $this->verifyType = $verifyType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRemark()
+    {
+        return $this->remark;
+    }
+
+    /**
+     * @param mixed $remark
+     */
+    public function setRemark($remark)
+    {
+        $this->remark = $remark;
     }
 }
