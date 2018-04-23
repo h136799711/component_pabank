@@ -20,7 +20,7 @@ use by\component\pabank\orange_e\base\BaseOEApi;
 
 /**
  * Class ReceivableTradingApi
- * 交易接口
+ * 交易接口 4032
  * @package by\component\pabank\orange_e\orange_e\trade
  */
 class ReceivableTradingApi extends BaseOEApi
@@ -40,7 +40,7 @@ class ReceivableTradingApi extends BaseOEApi
      *
      * @param  $tradeCode
      * @param  $body
-     * @return PayerAgreementAuthResp|null
+     * @return ReceivableTradingResp|null
      * @throws \ReflectionException
      */
     protected function convertToResp($tradeCode, $body) {

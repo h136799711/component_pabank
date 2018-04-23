@@ -20,8 +20,8 @@ use by\component\pabank\orange_e\base\BaseOEApi;
 
 /**
  * Class ReceivableTradingQueryApi
- * 交易查询接口
- * @package by\component\pabank\orange_e\orange_e\trade
+ * 交易明细查询接口 4035
+ * @package by\component\pabank\orange_e\trade
  */
 class ReceivableTradingQueryApi extends BaseOEApi
 {

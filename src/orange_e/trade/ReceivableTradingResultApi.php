@@ -20,7 +20,7 @@ use by\component\pabank\orange_e\base\BaseOEApi;
 
 /**
  * Class ReceivableTradingResultApi
- * 交易结果接口
+ * 交易结果接口 4033
  * @package by\component\pabank\orange_e\orange_e\trade
  */
 class ReceivableTradingResultApi extends BaseOEApi
